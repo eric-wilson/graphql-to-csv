@@ -1,0 +1,8 @@
+types-python-dateutil
+build
+toml
+twine
+wheel
+setuptools
+pkginfo # occasionally
+pytest

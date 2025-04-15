@@ -1,0 +1,65 @@
+"""
+Represents a user in the system.
+"""
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String
+  email: String!
+  roles: [Role!]!
+  isActive: Boolean!
+  profile: UserProfile
+}
+
+"""
+Detailed profile information for a user.
+"""
+type UserProfile {
+  bio: String
+  avatarUrl: String
+  interests: [String]
+}
+
+"""
+A role assigned to a user.
+"""
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+"""
+Root query operations
+"""
+type Query {
+  getUser(id: ID!): User
+  listUsers(activeOnly: Boolean): [User!]!
+}
+
+"""
+Root mutation operations
+"""
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User
+}
+
+"""
+Input for creating a user
+"""
+input CreateUserInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  roles: [Role!]!
+}
+
+"""
+Input for updating a user
+"""
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  isActive: Boolean
+}
